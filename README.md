@@ -1,2 +1,5 @@
 # todo-app
-This is the full stack basic app for Todos
+First commit
+
+Description
+Full stack app with CI/CD integrated
