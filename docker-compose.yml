@@ -22,7 +22,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    image: todo-backend
+    image: anubhavdaga/todo-backend:latest
     restart: always
     depends_on:
       mysql:
@@ -39,7 +39,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    image: todo-frontend
+    image: anubhavdaga/todo-frontend:latest
     restart: always
     depends_on:
       - backend
