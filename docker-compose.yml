@@ -11,14 +11,22 @@ services:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
     image: todo-backend
+    restart: always
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/tododb
       SPRING_DATASOURCE_USERNAME: root
@@ -32,6 +40,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     image: todo-frontend
+    restart: always
     depends_on:
       - backend
     ports:
