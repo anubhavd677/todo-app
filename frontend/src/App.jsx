@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
-const API_URL = 'http://localhost:8080/api/todos'
+const API_URL = '/api/todos'
 
 function App() {
   const [todos, setTodos] = useState([])
